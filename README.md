@@ -69,6 +69,15 @@ The application uses a PostgreSQL database with the following key entities:
 - **Routes**: Represents the delivery routes available in the system.
 - **Load Types**: Defines the different types of loads that can be transported.
 
+### Screenshots
+![image](https://github.com/user-attachments/assets/ccf5b993-1bfe-401c-8d02-0b165f691357)
+
+![image](https://github.com/user-attachments/assets/f13b64a9-b574-4f95-b433-64413d05df62)
+
+![image](https://github.com/user-attachments/assets/02521f37-f1c9-4995-9466-5b35e3ad5722)
+
+
+
 ## Contributing
 
 If you would like to contribute to the project, please fork the repository and create a pull request with your changes.
