@@ -1,0 +1,29 @@
+<%= flash_messages %>
+<div class="title-box">
+  <h1>New Bid</h1>
+</div>
+<div class="box">
+  <%= form_with url: bids_path, method: :post, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :carrier_name, "Carrier Name" %>
+      <%= f.text_field :carrier_name, class: "form-control", value: params[:carrier_name] %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :route_id, "Route" %>
+      <%= f.collection_select :route_id, @routes, :id, :origin_to_destination, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :load_type_id, "Load Type" %>
+      <%= f.collection_select :load_type_id, @load_types, :id, :name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price, "Bid Price" %>
+      <%= f.number_field :price, step: 0.01, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Submit Bid", class: "btn-green" %>
+  <% end %>
+</div>

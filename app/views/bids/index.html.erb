@@ -1,0 +1,50 @@
+<% unless @bids.present? %>
+  <%= render 'company_name' %>
+<% else %>
+  <div class="title-box">
+    <h1>Your Bids</h1>
+  </div>
+  <div class="box">
+    <div class="table-container">
+      <table class="bids-table" id="bidsTable">
+        <thead>
+          <tr>
+            <th>Route</th>
+            <th>Load Type</th>
+            <th>Price</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= turbo_frame_tag "bids_frame" do %>
+            <% @bids.each do |bid| %>
+              <tr class="<%= bid[:winning] ? 'winning-row' : 'losing-row' %>">
+                <td><%= bid[:route] %></td>
+                <td><%= bid[:load_type] %></td>
+                <td>$<%= bid[:price] %></td>
+                <td>
+                  <% if bid[:winning] %>
+                    Winning Bid!
+                  <% else %>
+                    Not Winning
+                    <div class="decrease-bid-options">
+                      <% [1, 10, 100, 1000].each do |decrement| %>
+                        <%= form_with url: bids_path, method: :post, local: true do |f| %>
+                          <%= f.hidden_field :carrier_name, value: params[:carrier_name] %>
+                          <%= f.hidden_field :route_id, value: bid[:route_id] %>
+                          <%= f.hidden_field :load_type_id, value: bid[:load_type_id] %>
+                          <%= f.hidden_field :price, value: bid[:price] - decrement %>
+                          <%= f.submit "-$#{decrement}", class: "decrease-bid-link btn-link", title: "Decreasebid by $#{decrement}" %>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

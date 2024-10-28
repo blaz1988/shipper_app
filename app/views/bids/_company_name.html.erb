@@ -1,0 +1,12 @@
+<div class="title-box">
+  <h1>Please enter your company name to view your bids</h1>
+</div>
+<div class="box">
+  <%= form_with url: bids_path, method: :get, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :carrier_name, "Company Name" %>
+      <%= f.text_field :carrier_name, class: "form-control", placeholder: "Enter Company Name" %>
+    </div>
+    <%= f.submit "View Bids", class: "btn-green" %>
+  <% end %>
+</div>

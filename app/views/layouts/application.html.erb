@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ShipperApp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Header with Logo on the Left and Links on the Right -->
+    <header>
+      <nav class="header-nav">
+        <div class="logo">
+          <a href="/"><span>ShipperApp</span></a>
+        </div>
+        <div class="nav-links">
+          <a href="<%= new_bid_path %>">Submit Bid</a>
+          <a href="<%= bids_path %>">Results</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container">
+      <%= flash_messages %>
+      <%= turbo_frame_tag "flash" %>
+      <%= yield %>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <p>&copy; <%= Date.today.year %> ShipperApp | All rights reserved</p>
+    </footer>
+  </body>
+</html>
