@@ -17,8 +17,8 @@ To get the application up and running locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone git@github.com:your_username/downhome.git
-   cd downhome
+   git clone git@github.com:blaz1988/shipper_app.git
+   cd shipper_ap
    ```
 
 2. Install the required gems:
