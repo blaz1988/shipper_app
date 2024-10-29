@@ -31,7 +31,7 @@ class SubmitBid::Action
   end
 
   def carrier
-    @carrier ||= Carrier.find_or_create_by(name: carrier_name)
+    @carrier ||= Carrier.find_or_create_by!(name: carrier_name)
   end
 
   def route
